@@ -11,8 +11,16 @@ class Remover extends Component {
 				'Toni Zuck',
 				'Peter Hanshfield',
 				'Rose Tobernak'
-			]
+			],
 		};
+	}
+	removeStudent(student) {
+		const studentToRm = student;
+		const studentList = this.state.students;
+		const index = studentList.indexOf(student);
+		studentList.splice(index, 1);
+		this.setState({ students: studentList });
+		console.log(studentToRm, studentList)
 	}
 
 	render() {
@@ -22,7 +30,7 @@ class Remover extends Component {
 				<p>Add a delete button for each student to remove it from the list.</p>
 				<ul className="Remover__list">
 					{this.state.students.map((student, index) => {
-						return <li key={index}>{student}</li>;
+						return <li key={index}>{student} <button onClick={this.removeStudent.bind(this, student)}>Remove</button></li>;
 					})}
 				</ul>
 			</div>

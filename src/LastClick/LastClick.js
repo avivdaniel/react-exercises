@@ -2,7 +2,13 @@ import React, { Component } from 'react';
 import './LastClick.scss';
 
 class LastClick extends Component {
-
+	constructor(props) {
+		super(props);
+		this.state = { lastNum: null };
+	}
+	changeLastNum(num) {
+		this.setState({ lastNum: num });
+	}
 	render() {
 		return (
 			<div className="LastClick">
@@ -11,12 +17,12 @@ class LastClick extends Component {
 					Make the box show the number of the last clicked button.
 				</p>
 				<div className="LastClick__buttons">
-					<button>1</button>
-					<button>2</button>
-					<button>3</button>
+					<button onClick={this.changeLastNum.bind(this, 1)}>1</button>
+					<button onClick={this.changeLastNum.bind(this, 2)}>2</button>
+					<button onClick={this.changeLastNum.bind(this, 3)}>3</button>
 				</div>
 				<div className="LastClick__box">
-1
+					{this.state.lastNum}
 				</div>
 			</div>
 		)
